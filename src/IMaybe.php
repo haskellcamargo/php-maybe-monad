@@ -23,7 +23,7 @@
   namespace Maybe;
 
   interface IMaybe {
-    function bind($fn);                   # :: (Maybe a, (a -> b)) -> b
+    function bind($fn);                   # :: (Maybe a, callable) -> Maybe b
     function fromJust();                  # :: Maybe a -> a
     function fromMaybe($def);             # :: (Maybe a, a) -> a
     function isJust();                    # :: Maybe a -> Bool
