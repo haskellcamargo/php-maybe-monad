@@ -1,0 +1,14 @@
+{
+    "name": "haskellcamargo/php-maybe-monad",
+    "description": "A PHP implementation of Haskell's Maybe monad",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marcelo Camargo",
+            "email": "marcelocamargo@linuxmail.org"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
