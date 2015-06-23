@@ -10,7 +10,9 @@ A port of Haskell's `Data.Maybe` module for **PHP > 5.4**.
 ```php
 <?php
 
-require_once "./src/Maybe.php";
+require_once "vendor/autoload.php";
+
+use HaskellCamargo\Maybe;
 
 Maybe\Maybe(@$_GET["username"])->bind(function($user)) {
   echo "Welcome, $user. You're logged in!";
@@ -39,11 +41,11 @@ underlying type of the first argument to another monadic type, and its
 results is in that other monadic type.
 
 ```php
-$age = \Maybe\Maybe(null)->bind(function($x) {
+$age = Maybe\Maybe(null)->bind(function($x) {
   return 10;
 }); // => Nothing
 
-$age = \Maybe\Maybe(10)
+$age = Maybe\Maybe(10)
 ->bind(function($x) {
   return $x + 10; // => Just(20);
 })
@@ -58,8 +60,8 @@ Extracts the element out of a `Just` and returns an error if its argument
 is `Nothing`.
 
 ```php
-\Maybe\Maybe("Foo")->fromJust(); // => "Foo"
-\Maybe\Maybe(null)->fromJust(); // => Exception: Cannot cal fromJust() on Nothing
+Maybe\Maybe("Foo")->fromJust(); // => "Foo"
+Maybe\Maybe(null)->fromJust(); // => Exception: Cannot cal fromJust() on Nothing
 ```
 
 #### fromMaybe :: (Maybe a, a) -> a
@@ -69,8 +71,8 @@ returns the default values; otherwise, it returns the value contained in
 the `Maybe`.
 
 ```php
-\Maybe\Maybe(10)->fromMaybe(5); // => 10
-\Maybe\Maybe(null)->fromMaybe(5); // => 5
+Maybe\Maybe(10)->fromMaybe(5); // => 10
+Maybe\Maybe(null)->fromMaybe(5); // => 5
 ```
 
 #### isJust :: Maybe a -> boolean
@@ -78,8 +80,8 @@ the `Maybe`.
 Returns true if its argument is of the form `Just _`.
 
 ```php
-\Maybe\Maybe(10)->isJust(); // => true
-\Maybe\Maybe(null)->isJust(); // => false
+Maybe\Maybe(10)->isJust(); // => true
+Maybe\Maybe(null)->isJust(); // => false
 ```
 
 #### isNothing :: Maybe a -> boolean
@@ -87,8 +89,8 @@ Returns true if its argument is of the form `Just _`.
 Returns true if its argument is of the form `Nothing`.
 
 ```php
-\Maybe\Maybe(10)->isNothing(); // => false
-\Maybe\Maybe(null)->isNothing(); // => true
+Maybe\Maybe(10)->isNothing(); // => false
+Maybe\Maybe(null)->isNothing(); // => true
 ```
 
 #### maybe :: (Maybe a, b, callable) -> b
@@ -99,8 +101,8 @@ Otherwise, it applies the function to the value inside the `Just` and
 returns the result.
 
 ```php
-$just = \Maybe\Maybe(10);
-$nothing = \Maybe\Maybe(null);
+$just = Maybe\Maybe(10);
+$nothing = Maybe\Maybe(null);
 
 $just->maybe(40, function($num) {
         return $num + 15;
@@ -117,8 +119,8 @@ Returns an empty list when given ``Nothing`` or a singleton list when not
 given ``Nothing``.
 
 ```php
-\Maybe\Maybe(10)->toList(); // => [10]
-\Maybe\Maybe(null)->toList(); // => []
+Maybe\Maybe(10)->toList(); // => [10]
+Maybe\Maybe(null)->toList(); // => []
 ```
 
 Made with :heart: by Marcelo Camargo
