@@ -26,6 +26,11 @@
   # and return `Just _` or `Nothing`, wrapping the value in a monadic
   # constructor in case of success.
   function Maybe($value) {
+    # Work as identitify and return itself when it is already a monadic value
+    if ($value instance of AbstractMaybe) {
+      return $value;
+    }
+    
     # A value is nothing when it is null or instance of Data.Null. Otherwise, is
     # Just _.
     if (is_null($value) || is_object($value)) {
