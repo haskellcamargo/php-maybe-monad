@@ -26,8 +26,8 @@
     function bind($fn);                   # :: (Maybe a, callable) -> Maybe b
     function fromJust();                  # :: Maybe a -> a
     function fromMaybe($def);             # :: (Maybe a, a) -> a
-    function isJust();                    # :: Maybe a -> Bool
-    function isNothing();                 # :: Maybe a -> Bool
-    function maybe($def, $fn);            # :: (Maybe a, b, (a -> b)) -> b
-    function toList();                    # :: Maybe a -> [a]
+    function isJust();                    # :: Maybe a -> boolean
+    function isNothing();                 # :: Maybe a -> boolean
+    function maybe($def, $fn);            # :: (Maybe a, b, callable) -> b
+    function toList();                    # :: Maybe a -> array
   }
