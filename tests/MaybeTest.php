@@ -2,16 +2,16 @@
 
 namespace Tests;
 
-require_once "./src/Maybe.php";
+use HaskellCamargo\Maybe;
 
-class Maybe_Test extends \PHPUnit_Framework_TestCase
+class MaybeTest extends \PHPUnit_Framework_TestCase
 {
   public function testInstance()
   {
-    $shouldBeNothing = \Maybe\Maybe(null);
-    $shouldBeJust = \Maybe\Maybe(1);
-    $this->assertEquals(true, $shouldBeNothing instanceof \Maybe\Nothing);
-    $this->assertEquals(true, $shouldBeJust instanceof \Maybe\Just);
+    $shouldBeNothing = Maybe\Maybe(null);
+    $shouldBeJust = Maybe\Maybe(1);
+    $this->assertEquals(true, $shouldBeNothing instanceof Maybe\Nothing);
+    $this->assertEquals(true, $shouldBeJust instanceof Maybe\Just);
   }
 
   public function testBind()
@@ -19,11 +19,11 @@ class Maybe_Test extends \PHPUnit_Framework_TestCase
     $just = null;
     $nothing = null;
 
-    $x = \Maybe\Maybe(10)->bind(function($num) use (&$just) {
+    $x = Maybe\Maybe(10)->bind(function($num) use (&$just) {
       return $just = $num;
     });
 
-    $y = \Maybe\Maybe(null)->bind(function($num) use (&$just) {
+    $y = Maybe\Maybe(null)->bind(function($num) use (&$just) {
       return $just = 10;
     });
 
@@ -31,13 +31,13 @@ class Maybe_Test extends \PHPUnit_Framework_TestCase
     $this->assertEquals(null, $nothing);
 
 
-    $this->assertEquals(true, $x instanceof \Maybe\Just);
-    $this->assertEquals(true, $y instanceof \Maybe\Nothing);
+    $this->assertEquals(true, $x instanceof Maybe\Just);
+    $this->assertEquals(true, $y instanceof Maybe\Nothing);
   }
 
   public function testFromJustPass()
   {
-    $just = \Maybe\Maybe(10);
+    $just = Maybe\Maybe(10);
     $this->assertEquals(10, $just->fromJust());
   }
 
@@ -46,14 +46,14 @@ class Maybe_Test extends \PHPUnit_Framework_TestCase
    */
   public function testFromJustFail()
   {
-    $nothing = \Maybe\Maybe(null);
+    $nothing = Maybe\Maybe(null);
     $nothing->fromJust();
   }
 
   public function testFromMaybe()
   {
-    $just = \Maybe\Maybe(10);
-    $nothing = \Maybe\Maybe(null);
+    $just = Maybe\Maybe(10);
+    $nothing = Maybe\Maybe(null);
 
     $this->assertEquals(10, $just->fromMaybe(5));
     $this->assertEquals(5, $nothing->fromMaybe(5));
@@ -61,8 +61,8 @@ class Maybe_Test extends \PHPUnit_Framework_TestCase
 
   public function testIsJust()
   {
-    $just = \Maybe\Maybe(10);
-    $nothing = \Maybe\Maybe(null);
+    $just = Maybe\Maybe(10);
+    $nothing = Maybe\Maybe(null);
 
     $this->assertEquals(true, $just->isJust());
     $this->assertEquals(false, $nothing->isJust());
@@ -70,8 +70,8 @@ class Maybe_Test extends \PHPUnit_Framework_TestCase
 
   public function testIsNothing()
   {
-    $just = \Maybe\Maybe(10);
-    $nothing = \Maybe\Maybe(null);
+    $just = Maybe\Maybe(10);
+    $nothing = Maybe\Maybe(null);
 
     $this->assertEquals(false, $just->isNothing());
     $this->assertEquals(true, $nothing->isNothing());
@@ -79,8 +79,8 @@ class Maybe_Test extends \PHPUnit_Framework_TestCase
 
   public function testMaybe()
   {
-    $just = \Maybe\Maybe(10);
-    $nothing = \Maybe\Maybe(null);
+    $just = Maybe\Maybe(10);
+    $nothing = Maybe\Maybe(null);
 
     $this->assertEquals(25, $just->maybe(40, function($num) {
       return $num + 15;
@@ -92,8 +92,8 @@ class Maybe_Test extends \PHPUnit_Framework_TestCase
 
   public function testToList()
   {
-    $just = \Maybe\Maybe(10);
-    $nothing = \Maybe\Maybe(null);
+    $just = Maybe\Maybe(10);
+    $nothing = Maybe\Maybe(null);
 
     $this->assertEquals([10], $just->toList());
     $this->assertEquals([], $nothing->toList());
