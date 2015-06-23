@@ -5,6 +5,7 @@ php:
   - 5.6
   - 7.0
 
-script:
+install:
     - composer install
-    - composer test
+
+script: composer test
