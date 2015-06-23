@@ -123,4 +123,4 @@ Maybe\Maybe(10)->toList(); // => [10]
 Maybe\Maybe(null)->toList(); // => []
 ```
 
-Made with :heart: by Marcelo Camargo
+Made with :heart: by Marcelo Camargo and Reinaldo Rauch
