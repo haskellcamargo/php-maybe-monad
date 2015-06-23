@@ -19,11 +19,13 @@
         "phpunit/phpunit": "^4.7"
     },
     "autoload": {
-        "psr-4": {
-            "HaskellCamargo\\Maybe\\": [
-                "src/",
-            ]
-        }
+        "files": [
+            "src/AbstractMaybe.php",
+            "src/IMaybe.php",
+            "src/Just.php",
+            "src/Nothing.php",
+            "src/Maybe.php"
+        ]
     },
     "scripts": {
         "test": "vendor/bin/phpunit tests/"
