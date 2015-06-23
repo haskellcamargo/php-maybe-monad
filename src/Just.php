@@ -23,7 +23,7 @@
   namespace HaskellCamargo\Maybe;
 
   # `Just` is a constructor of the `Maybe` type/monad. It must carry a value.
-  class Just extends Maybe implements IMaybe {
+  class Just extends AbstractMaybe implements IMaybe {
     function __construct($value)
     {
       $this->value = $value;

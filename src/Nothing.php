@@ -25,7 +25,7 @@
   use \Exception;
 
   # `Nothing` is a constructor of the `Maybe` type/monad. It doesn't take value.
-  class Nothing extends Maybe implements IMaybe {
+  class Nothing extends AbstractMaybe implements IMaybe {
 
     # Equivalent to Haskell's `>>=` operator. Its first argument is a value in
     # a monadic type, its second argument is a function that maps from the
