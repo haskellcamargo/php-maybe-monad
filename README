@@ -1,7 +1,10 @@
 ## PHP Maybe Monad
 
+[![Build Status](https://travis-ci.org/haskellcamargo/php-maybe-monad.svg?branch=master)](https://travis-ci.org/haskellcamargo/php-maybe-monad)
+
 To deal with computations that may fail.
 A port of Haskell's `Data.Maybe` module for PHP.
+**PHP > 5.4**
 
 ### Example
 
