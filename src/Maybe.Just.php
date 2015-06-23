@@ -35,7 +35,7 @@
     # results is in that other monadic type.
     function bind($fn) # :: (Maybe a, callable) -> Maybe b
     {
-      return $fn($this->value);
+      return Maybe($fn($this->value));
     }
 
     # Extracts the element out of a `Just` and returns an error if its argument

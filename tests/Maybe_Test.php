@@ -19,16 +19,20 @@ namespace Tests
       $just = null;
       $nothing = null;
 
-      \Maybe\Maybe(10)->bind(function($num) use (&$just) {
-        $just = $num;
+      $x = \Maybe\Maybe(10)->bind(function($num) use (&$just) {
+        return $just = $num;
       });
 
-      \Maybe\Maybe(null)->bind(function($num) use (&$just) {
-        $just = 10;
+      $y = \Maybe\Maybe(null)->bind(function($num) use (&$just) {
+        return $just = 10;
       });
 
       $this->assertEquals(10, $just);
       $this->assertEquals(null, $nothing);
+
+
+      $this->assertEquals(true, $x instanceof \Maybe\Just);
+      $this->assertEquals(true, $y instanceof \Maybe\Nothing);
     }
 
     public function testFromJustPass()

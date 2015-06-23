@@ -39,7 +39,7 @@
     # a monadic type, its second argument is a function that maps from the
     # underlying type of the first argument to another monadic type, and its
     # results is in that other monadic type.
-    abstract function bind($fn); # :: (Maybe a, Func) -> Maybe b
+    abstract function bind($fn); # :: (Maybe a, callable) -> Maybe b
 
     # Extracts the element out of a `Just` and returns an error if its argument
     # is `Nothing`.
@@ -60,11 +60,11 @@
     # `Maybe` value is `Nothing`, the function returns the default value.
     # Otherwise, it applies the function to the value inside the `Just` and
     # returns the result.
-    abstract function maybe($def, $fn); # :: (Maybe a, b, Func) -> b
+    abstract function maybe($def, $fn); # :: (Maybe a, b, callable) -> b
 
     # Returns an empty list when given ``Nothing`` or a singleton list when not
     # given ``Nothing``.
-    abstract function toList(); # :: Maybe a -> Collection
+    abstract function toList(); # :: Maybe a -> array
   }
 
   # This function applies construction for `Maybe` monad. It is able to detect

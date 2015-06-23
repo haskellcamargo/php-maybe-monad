@@ -12,7 +12,7 @@ A port of Haskell's `Data.Maybe` module for PHP.
 <?php
 
 Maybe\Maybe(@$_GET["username"])->bind(function($user)) {
-  echo "Welcome, $user. You're logged in!";
+  echo "Welcome, $user->. You're logged in!";
 });
 
 $userAge = Maybe\Maybe(null)->fromMaybe(0); // => 0
@@ -29,3 +29,25 @@ or exceptional cases without resorting to drastic measures such as
 The `Maybe` type is also a monad. It is a simple kind of error monad, where
 all errors are represented by `Nothing`. A richer error monad can be built
 using the `Either` type.
+
+#### bind :: (Maybe a, callable) -> Maybe
+
+Equivalent to Haskell's `>>=` operator. Its first argument is a value in
+a monadic type, its second argument is a function that maps from the
+underlying type of the first argument to another monadic type, and its
+results is in that other monadic type.
+
+```php
+$age = \Maybe\Maybe(null)->bind(function($x) {
+  return 10;
+}); // => Nothing
+
+$age = \Maybe\Maybe(10)
+->bind(function($x) {
+  return $x + 10; // => Just(20);
+})
+->bind(function($x) {
+  return $x + 20; // => Just(40);
+})->fromJust(); // => 40
+```
+
