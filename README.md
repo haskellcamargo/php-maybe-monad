@@ -3,8 +3,7 @@
 [![Build Status](https://travis-ci.org/haskellcamargo/php-maybe-monad.svg?branch=master)](https://travis-ci.org/haskellcamargo/php-maybe-monad)
 
 To deal with computations that may fail.
-A port of Haskell's `Data.Maybe` module for PHP.
-**PHP > 5.4**
+A port of Haskell's `Data.Maybe` module for **PHP > 5.4**.
 
 ### Example
 
@@ -14,7 +13,7 @@ A port of Haskell's `Data.Maybe` module for PHP.
 require_once "./src/Maybe.php";
 
 Maybe\Maybe(@$_GET["username"])->bind(function($user)) {
-  echo "Welcome, $user->. You're logged in!";
+  echo "Welcome, $user. You're logged in!";
 });
 
 $userAge = Maybe\Maybe(null)->fromMaybe(0); // => 0
