@@ -27,7 +27,7 @@
   # constructor in case of success.
   function Maybe($value) {
     # Work as identitify and return itself when it is already a monadic value
-    if ($value instance of AbstractMaybe) {
+    if ($value instanceof AbstractMaybe) {
       return $value;
     }
     
