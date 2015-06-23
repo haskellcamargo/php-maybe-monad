@@ -1,6 +1,6 @@
 ## PHP Maybe Monad
 
-[![Build Status](https://travis-ci.org/haskellcamargo/php-maybe-monad.svg?branch=master)](https://travis-ci.org/haskellcamargo/php-maybe-monad)
+[![Build Status](https://travis-ci.org/haskellcamargo/php-maybe-monad.svg?branch=master)](https://travis-ci.org/haskellcamargo/php-maybe-monad) [![Latest Stable Version](https://poser.pugx.org/haskellcamargo/php-maybe-monad/v/stable)](https://packagist.org/packages/haskellcamargo/php-maybe-monad) [![Total Downloads](https://poser.pugx.org/haskellcamargo/php-maybe-monad/downloads)](https://packagist.org/packages/haskellcamargo/php-maybe-monad) [![Latest Unstable Version](https://poser.pugx.org/haskellcamargo/php-maybe-monad/v/unstable)](https://packagist.org/packages/haskellcamargo/php-maybe-monad) [![License](https://poser.pugx.org/haskellcamargo/php-maybe-monad/license)](https://packagist.org/packages/haskellcamargo/php-maybe-monad)
 
 To deal with computations that may fail.
 A port of Haskell's `Data.Maybe` module for **PHP > 5.4**.
