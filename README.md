@@ -11,6 +11,8 @@ A port of Haskell's `Data.Maybe` module for PHP.
 ```php
 <?php
 
+require_once "./src/Maybe.php";
+
 Maybe\Maybe(@$_GET["username"])->bind(function($user)) {
   echo "Welcome, $user->. You're logged in!";
 });
