@@ -1,0 +1,33 @@
+{
+    "name": "haskellcamargo/php-maybe-monad",
+    "description": "A PHP implementation of Haskell's Maybe monad",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marcelo Camargo",
+            "email": "marcelocamargo@linuxmail.org"
+        },
+        {
+            "name": "Reinaldo A. C. Rauch",
+            "email": "reinaldorauch@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^4.7"
+    },
+    "autoload": {
+        "files": [
+            "src/AbstractMaybe.php",
+            "src/IMaybe.php",
+            "src/Just.php",
+            "src/Nothing.php",
+            "src/Maybe.php"
+        ]
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit tests/"
+    }
+}
