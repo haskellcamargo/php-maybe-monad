@@ -30,14 +30,14 @@
     # a monadic type, its second argument is a function that maps from the
     # underlying type of the first argument to another monadic type, and its
     # results is in that other monadic type.
-    function bind($_) { # :: (Maybe a, Func) -> Maybe b
+    function bind($_) { # :: (Maybe a, callable) -> Maybe b
       return $this;
     }
 
     # Extracts the element out of a `Just` and returns an error if its argument
     # is `Nothing`.
     function fromJust() { # :: Maybe a -> a
-      throw new Exception("Cannot cal val() nothing");
+      throw new Exception("Cannot cal fromJust() on Nothing");
     }
 
     # Takes a `Maybe` value and a default value. If the `Maybe` is `Nothing`, it
@@ -61,7 +61,7 @@
     # `Maybe` value is `Nothing`, the function returns the default value.
     # Otherwise, it applies the function to the value inside the `Just` and
     # returns the result.
-    function maybe($def, $_) { # :: (Maybe a, b, Func) -> b
+    function maybe($def, $_) { # :: (Maybe a, b, callable) -> b
       return $def;
     }
 

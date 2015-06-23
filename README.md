@@ -51,3 +51,73 @@ $age = \Maybe\Maybe(10)
 })->fromJust(); // => 40
 ```
 
+#### fromJust :: Maybe a -> a
+
+Extracts the element out of a `Just` and returns an error if its argument
+is `Nothing`.
+
+```php
+\Maybe\Maybe("Foo")->fromJust(); // => "Foo"
+\Maybe\Maybe(null)->fromJust(); // => Exception: Cannot cal fromJust() on Nothing
+```
+
+#### fromMaybe :: (Maybe a, a) -> a
+
+Takes a `Maybe` value and a default value. If the `Maybe` is `Nothing`, it
+returns the default values; otherwise, it returns the value contained in
+the `Maybe`.
+
+```php
+\Maybe\Maybe(10)->fromMaybe(5); // => 10
+\Maybe\Maybe(null)->fromMaybe(5); // => 5
+```
+
+#### isJust :: Maybe a -> boolean
+
+Returns true if its argument is of the form `Just _`.
+
+```php
+\Maybe\Maybe(10)->isJust(); // => true
+\Maybe\Maybe(null)->isJust(); // => false
+```
+
+#### isNothing :: Maybe a -> boolean
+
+Returns true if its argument is of the form `Nothing`.
+
+```php
+\Maybe\Maybe(10)->isNothing(); // => false
+\Maybe\Maybe(null)->isNothing(); // => true
+```
+
+#### maybe :: (Maybe a, b, callable) -> b
+
+Takes a default value, a function and, of course, a `Maybe` value. If the
+`Maybe` value is `Nothing`, the function returns the default value.
+Otherwise, it applies the function to the value inside the `Just` and
+returns the result.
+
+```php
+$just = \Maybe\Maybe(10);
+$nothing = \Maybe\Maybe(null);
+
+$just->maybe(40, function($num) {
+        return $num + 15;
+}); // => 25
+
+$nothing->maybe(40, function($num) {
+  return $num + 15;
+}); // => 40
+```
+
+#### toList :: Maybe a -> array
+
+Returns an empty list when given ``Nothing`` or a singleton list when not
+given ``Nothing``.
+
+```php
+\Maybe\Maybe(10)->toList(); // => [10]
+\Maybe\Maybe(null)->toList(); // => []
+```
+
+Made with :heart: by Marcelo Camargo
