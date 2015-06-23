@@ -32,7 +32,7 @@ The `Maybe` type is also a monad. It is a simple kind of error monad, where
 all errors are represented by `Nothing`. A richer error monad can be built
 using the `Either` type.
 
-#### bind :: (Maybe a, callable) -> Maybe
+#### bind :: (Maybe a, callable) -> Maybe b
 
 Equivalent to Haskell's `>>=` operator. Its first argument is a value in
 a monadic type, its second argument is a function that maps from the
