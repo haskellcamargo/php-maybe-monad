@@ -33,7 +33,7 @@
     
     # A value is nothing when it is null or instance of Data.Null. Otherwise, is
     # Just _.
-    if (is_null($value) || is_object($value)) {
+    if (is_null($value)) {
       return new Nothing;
     }
 
