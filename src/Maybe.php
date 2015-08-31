@@ -33,9 +33,7 @@
     
     # A value is nothing when it is null or instance of Data.Null. Otherwise, is
     # Just _.
-    if (is_null($value)) {
-      return new Nothing;
-    }
-
-    return new Just($value);
+    return is_null($value)
+      ? new Nothing
+      : new Just($value);
   }
