@@ -48,7 +48,7 @@
       return $def;
     }
 
-    # Returns false if its argument is of the form `Just _`.
+    # Returns true if its argument is of the form `Just _`.
     function isJust() { # :: Maybe a -> boolean
       return false;
     }
