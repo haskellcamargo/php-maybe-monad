@@ -6,13 +6,16 @@
 To deal with computations that may fail.
 A port of Haskell's `Data.Maybe` module for **PHP > 5.4**.
 
+### Install
+You can install via Composer.
+
+```bash
+composer require haskellcamargo/php-maybe-monad
+```
+
 ### Example
 
 ```php
-<?php
-
-require_once "vendor/autoload.php";
-
 use HaskellCamargo\Maybe;
 
 Maybe\Maybe(@$_GET["username"])->bind(function($user)) {
@@ -125,3 +128,6 @@ Maybe\Maybe(null)->toList(); // => []
 ```
 
 Made with :heart: by Marcelo Camargo and Reinaldo Rauch
+
+### License
+MIT

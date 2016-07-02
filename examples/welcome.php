@@ -28,10 +28,10 @@ class Welcome
         $this->name = $name ?: null;
     }
 
-    public function hello()
+    public function hello($def = 'Unknown')
     {
         $user = new User(
-            Maybe\Maybe($this->name)->fromMaybe('Unknown')
+            Maybe\Maybe($this->name)->fromMaybe($def)
         );
 
         return sprintf('Hello, %s', $user->getName());
