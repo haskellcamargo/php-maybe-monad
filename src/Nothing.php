@@ -43,7 +43,7 @@ class Nothing implements MaybeInterface, NothingInterface
      */
     public function fromJust()
     {
-        throw new \Exception('Cannot call fromJust() on Nothing');
+        throw new \RuntimeException('Cannot call fromJust() on Nothing');
     }
 
     /**
