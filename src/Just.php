@@ -1,83 +1,101 @@
 <?php
-  # Copyright (c) 2014 Marcelo Camargo <marcelocamargo@linuxmail.org>
-  #
-  # Permission is hereby granted, free of charge, to any person
-  # obtaining a copy of this software and associated documentation files
-  # (the "Software"), to deal in the Software without restriction,
-  # including without limitation the rights to use, copy, modify, merge,
-  # publish, distribute, sublicense, and/or sell copies of the Software,
-  # and to permit persons to whom the Software is furnished to do so,
-  # subject to the following conditions:
-  #
-  # The above copyright notice and this permission notice shall be
-  # included in all copies or substantial of portions the Software.
-  #
-  # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-  # EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-  # MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-  # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-  # LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-  # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-  # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-  namespace HaskellCamargo\Maybe;
+/*
+ * Copyright (c) 2014 Marcelo Camargo <marcelocamargo@linuxmail.org>
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation files
+ * (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge,
+ * publish, distribute, sublicense, and/or sell copies of the Software,
+ * and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial of portions the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
 
-  # `Just` is a constructor of the `Maybe` type/monad. It must carry a value.
-  class Just extends AbstractMaybe implements IMaybe {
-    function __construct($value)
+namespace HaskellCamargo\Maybe;
+
+/**
+ * `Just` is a constructor of the `Maybe` type/monad. It must carry a value.
+ */
+class Just implements MaybeInterface, JustInterface
+{
+    /**
+     * @var mixed
+     */
+    private $value;
+
+    /**
+     * @param mixed $value
+     */
+    public function __construct($value)
     {
-      $this->value = $value;
+        $this->value = $value;
     }
 
-    # Equivalent to Haskell's `>>=` operator. Its first argument is a value in
-    # a monadic type, its second argument is a function that maps from the
-    # underlying type of the first argument to another monadic type, and its
-    # results is in that other monadic type.
-    function bind($fn) # :: (Maybe a, callable) -> Maybe b
+    /**
+     * {@inheritdoc}
+     */
+    public function bind(\Closure  $fn)
     {
-      return Maybe($fn($this->value));
+        return Maybe($fn($this->value));
     }
 
-    # Extracts the element out of a `Just` and returns an error if its argument
-    # is `Nothing`.
-    function fromJust() # :: Maybe a -> a
+    /**
+     * {@inheritdoc}
+     */
+    public function fromJust()
     {
-      return $this->value;
+        return $this->value;
     }
 
-    # Takes a `Maybe` value and a default value. If the `Maybe` is `Nothing`, it
-    # returns the default values; otherwise, it returns the value contained in
-    # the `Maybe`.
-    function fromMaybe($_) # :: (Maybe a, a) -> a
+    /**
+     * {@inheritdoc}
+     */
+    public function fromMaybe($_)
     {
-      return $this->value;
+        return $this->value;
     }
 
-    # Returns true if its argument is of the form `Just _`.
-    function isJust() # :: Maybe a -> boolean
+    /**
+     * {@inheritdoc}
+     */
+    public function isJust()
     {
-      return true;
+        return true;
     }
 
-    # Returns true if its arguments is of the form `Nothing`.
-    function isNothing() # :: Maybe a -> boolean
+    /**
+     * {@inheritdoc}
+     */
+    public function isNothing()
     {
-      return false;
+        return false;
     }
 
-    # Takes a default value, a function and, of course, a `Maybe` value. If the
-    # `Maybe` value is `Nothing`, the function returns the default value.
-    # Otherwise, it applies the function to the value inside the `Just` and
-    # returns the result.
-    function maybe($_, $fn)  # :: (Maybe a, b, callable) -> b
+    /**
+     * {@inheritdoc}
+     */
+    public function maybe($_, $fn)
     {
-      return $fn($this->value);
+        return $fn($this->value);
     }
 
-    # Returns an empty list when given ``Nothing`` or a singleton list when not
-    # given ``Nothing``.
-    function toList() # :: Maybe a -> array
+    /**
+     * {@inheritdoc}
+     */
+    public function toList()
     {
-      return [$this->value];
+        return [$this->value];
     }
-  }
+}

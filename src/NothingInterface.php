@@ -25,24 +25,6 @@
 
 namespace HaskellCamargo\Maybe;
 
-/**
- * This function applies construction for `Maybe` monad. It is able to detect
- * and return `Just _` or `Nothing`, wrapping the value in a monadic
- * constructor in case of success.
- *
- * @param mixed $value
- *
- * @return Just|Nothing
- */
-function Maybe($value)
+interface NothingInterface
 {
-    if ($value instanceof MaybeInterface) {
-        return $value;
-    }
-
-    if (is_null($value)) {
-        return new Nothing();
-    }
-
-    return new Just($value);
 }
