@@ -46,7 +46,7 @@ class Just implements MaybeInterface, JustInterface
     /**
      * {@inheritdoc}
      */
-    public function bind(\Closure  $fn)
+    public function bind(callable $fn)
     {
         return Maybe($fn($this->value));
     }
@@ -86,7 +86,7 @@ class Just implements MaybeInterface, JustInterface
     /**
      * {@inheritdoc}
      */
-    public function maybe($_, $fn)
+    public function maybe($_, callable $fn)
     {
         return $fn($this->value);
     }

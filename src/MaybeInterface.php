@@ -33,10 +33,11 @@ interface MaybeInterface
      * underlying type of the first argument to another monadic type, and its
      * results is in that other monadic type.
      *
-     * @param \Closure $fn
+     * @param callable $fn
+     *
      * @return MaybeInterface
      */
-    public function bind(\Closure $fn);
+    public function bind(callable $fn);
 
     /**
      * Extracts the element out of a `Just` and returns an error if its argument
@@ -78,11 +79,11 @@ interface MaybeInterface
      * returns the result.
      *
      * @param $def
-     * @param $fn
+     * @param callable $fn
      *
      * @return mixed
      */
-    public function maybe($def, $fn);
+    public function maybe($def, callable $fn);
 
     /**
      * Returns an empty list when given ``Nothing`` or a singleton list when not

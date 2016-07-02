@@ -33,7 +33,7 @@ class Nothing implements MaybeInterface, NothingInterface
     /**
      * {@inheritdoc}
      */
-    public function bind(\Closure $fn)
+    public function bind(callable $fn)
     {
         return $this;
     }
@@ -73,7 +73,7 @@ class Nothing implements MaybeInterface, NothingInterface
     /**
      * {@inheritdoc}
      */
-    public function maybe($def, $_)
+    public function maybe($def, callable $_)
     {
         return $def;
     }
